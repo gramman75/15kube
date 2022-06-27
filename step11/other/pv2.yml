@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mypv2
+spec:
+  capacity:
+    storage: 100Mi
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: manual2 
+  hostPath:
+    path: "/run/desktop/mnt/host/d/data/kube" #/run/desktop/mnt/host/ 뒤로 local drive

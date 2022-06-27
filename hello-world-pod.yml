@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: gateway-service
+spec:
+  containers:
+    - name: gateway-service 
+      image: gramman75/gateway-service:1.0
+      livenessProbe:
+        httpGet:
+          path: /health-check
+          port: 8000
+        initialDelaySeconds: 3
+        periodSeconds: 5
+      readinessProbe:
+        httpGet:
+          path: /health-check
+          port: 8000
+        initialDelaySeconds: 3
+        periodSeconds: 5  

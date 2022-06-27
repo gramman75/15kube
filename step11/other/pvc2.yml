@@ -1,0 +1,13 @@
+#pv2와 연결된 pvc
+#pv와 PVC의 연결은 storageClassName이 같은 것을 찾아서 연결함.
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mypvc2
+spec:
+  resources:
+    requests:
+      storage: 50Mi
+  storageClassName: manual2
+  accessModes:
+    - ReadWriteOnce

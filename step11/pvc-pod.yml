@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pvc-pod 
+  labels:
+    name: myapp
+spec:
+  volumes:
+    - name: pvc1
+      persistentVolumeClaim:
+        claimName: mypvc
+  containers:
+  - name: myapp 
+    image: busybox:latest 
+    volumeMounts:
+      - mountPath: /mnt
+        name: pvc1 
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    command: ["tail","-f","/dev/null"]
