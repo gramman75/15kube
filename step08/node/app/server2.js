@@ -4,7 +4,7 @@ var http = require('http');
 
 var handler = function(req, res) {
     res.writeHead(200);
-    res.end('hello server2 : ' + os.hostname);
+    res.end('node server2 : ' + os.hostname);
 
 }
 

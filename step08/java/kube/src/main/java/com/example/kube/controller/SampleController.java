@@ -9,6 +9,6 @@ public class SampleController {
 
     @GetMapping("/")
     public String get(){
-        return "server2";
+        return "java server";
     }
 }

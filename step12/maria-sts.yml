@@ -9,7 +9,7 @@ spec:
     app: maria-sts
   ports:
   - port: 3306
-  clusterIP: None
+  # clusterIP: None
 ---
 apiVersion: apps/v1
 kind: StatefulSet
@@ -49,7 +49,7 @@ spec:
       name: pvc 
     spec:
       accessModes: [ "ReadWriteOnce" ]
-      storageClassName: hostpath 
+      storageClassName: manual 
       resources:
         requests:
           storage: 100Mi

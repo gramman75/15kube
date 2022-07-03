@@ -6,6 +6,6 @@ spec:
   selector:
     app: web
   ports:
-  - port: 9990 
+  - port: 9980 
     protocol: TCP
   type: NodePort

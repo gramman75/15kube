@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: java 
-          image: gramman75/java-server:2.0 #rollout을 하기 위해서 image를 만들고 버전을 변경하여 apply 
+          image: gramman75/java-server:1.0 #rollout을 하기 위해서 image를 만들고 버전을 변경하여 apply 
           resources:
             limits:
               memory: 512Mi
