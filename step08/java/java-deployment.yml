@@ -14,6 +14,8 @@ spec:
     spec:
       containers:
         - name: java 
+          ports:
+            - containerPort: 9990
           image: gramman75/java-server:1.0 #rollout을 하기 위해서 image를 만들고 버전을 변경하여 apply 
           resources:
             limits:

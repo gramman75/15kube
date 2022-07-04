@@ -7,5 +7,6 @@ spec:
     app: web
   ports:
   - port: 9990 
+    targetPort: 9990
     protocol: TCP
   type: NodePort
