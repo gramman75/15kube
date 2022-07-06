@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: server-ingress
+  annotations:
+    kubernetes.io/ingress.class : 'nginx'
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    # nginx.ingress.kubernetes.io/affinity: 'cookie'
+spec:
+  rules:
+    - host: node.sample.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix 
+            backend:
+              service:
+                name: node-service 
+                port:
+                  number: 9980 
+    - host: java.sample.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: java-service 
+                port:
+                  number: 9990 

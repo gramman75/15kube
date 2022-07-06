@@ -9,6 +9,7 @@ public class SampleController {
 
     @GetMapping("/")
     public String get(){
-        return "java server";
+        String hostName = System.getenv("HOSTNAME");
+        return "java server : " + hostName ;
     }
 }
