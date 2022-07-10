@@ -1,0 +1,5 @@
+# 운영용 Namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: prod

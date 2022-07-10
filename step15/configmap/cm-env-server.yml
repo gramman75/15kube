@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: cm-server
+  labels:
+    name: cm-server
+spec:
+  containers:
+  - name: cm-server
+    image: busybox:latest
+    env:
+      - name: LOG_LEVEL 
+        valueFrom:
+          configMapKeyRef:
+            name: cm-env
+            key: log_level
+      - name: APP_URL
+        valueFrom:
+          configMapKeyRef:
+            name: cm-env
+            key: app_url
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    command: ["/bin/sh"]
+    args: ["-c", "tail -f /dev/null"]

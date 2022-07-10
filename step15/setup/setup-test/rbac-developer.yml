@@ -1,0 +1,53 @@
+# 개발 담당용 SA
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: developer-sa
+  namespace: test 
+---
+# 개발 담당용 SA와 ClusetRole의 view 매핑
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: developer-crb
+  namespace: test 
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  king: ClusterRole 
+  name: admin 
+subjects:
+- kind: ServiceAccount
+  namespace: prod
+  name: developer-sa
+
+---
+# 개발 담당자용 Role생성.(ClusterRole view에 포함되므로 필수는 아님)
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: developer-role
+  namespace: test 
+rules:
+- apiGroups: [""]
+  resources: ["pods", "pods/log","services"]
+  verbs: ["get", "list","watch"]
+- apiGroups: ["extensions","apps"]
+  resources: ["pods", "pods/log","services"]
+  verbs: ["get", "list","watch"]
+---
+# 개발 담당용 SA와 developer-role 매핑
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: developer-rb
+  namespace: test 
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: developer-role
+subjects:
+- kind: ServiceAccount
+  namespace: test 
+  name: developer-sa
+
+

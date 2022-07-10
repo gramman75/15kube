@@ -1,0 +1,1 @@
+kubectl create secret tls www-cert --cert=nginx-selfsigned.crt --key=nginx-selfsigned.key
