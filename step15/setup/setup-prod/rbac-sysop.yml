@@ -1,8 +1,19 @@
 apiVersion: v1
-kind: ServiceAccocunt
+kind: ServiceAccount
 metadata:
   name: sysop-sa
   namespace: prod
+---
+#k8s 1.24 부터 SA를 만들면 Secret이 자동으로 생성되지 않음.
+#명시적으로 생성
+apiVersion: v1
+kind: Secret
+metadata:
+  name: sysop-token 
+  namespace: prod 
+  annotations:
+    kubernetes.io/service-account.name : sysop-sa 
+type: kubernetes.io/service-account-token	 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
@@ -17,4 +28,3 @@ subjects:
 - kind: ServiceAccount
   name: sysop-sa
   namespace: prod 
-  apiGroup: rbac.authorization.k8s.io
